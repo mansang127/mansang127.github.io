@@ -7,15 +7,15 @@
 <span id="more"></span>
 <h2 id="卷积与互相关"><a href="#卷积与互相关" class="headerlink" title="卷积与互相关"></a>卷积与互相关</h2><ol>
 <li><p>数学定义</p>
-<p> 卷积：$z(t)=x(t)*y(t)=\int_{-\infty}^{+\infty}x(\tau)y(t-\tau)\ \rm{d}\tau$</p>
-<p> 相关：$R<em>{xy}(\tau)=x(t)☆y(t)=\int</em>{-\infty}^{+\infty}x^*(t)y(t+\tau)\ \rm{d}t$</p>
+<p> 卷积：$z(t)=x(t)\ast y(t)=\int_{-\infty}^{+\infty}x(\tau)y(t-\tau)\ \rm{d}\tau$</p>
+<p> 相关：$R<em>{xy}(\tau)=x(t)\star y(t)=\int</em>{-\infty}^{+\infty}x^\ast (t)y(t+\tau)\ \rm{d}t$</p>
 <p> 两者很像，但要注意卷积的积分变量是 $\tau$ ，相关的积分变量是 $t$ 。</p>
 </li>
 </ol>
 <ol>
 <li><p>交换性</p>
-<p> 卷积满足交换律，即 $x(t)<em>y(t)=y(t)</em>x(t)$</p>
-<p> 相关不满足交换律， 即 $R<em>{xy}(\tau)=R</em>{yx}(-\tau)=\int_{-\infty}^{+\infty}x^*(t+\tau)y(t)\ \rm{d}t$</p>
+<p> 卷积满足交换律，即 $x(t)\ast y(t)=y(t)\ast x(t)$</p>
+<p> 相关不满足交换律， 即 $R<em>{xy}(\tau)=R</em>{yx}(-\tau)=\int_{-\infty}^{+\infty}x^\ast (t+\tau)y(t)\ \rm{d}t$</p>
 <p> 证明：</p>
 <script type="math/tex; mode=display">
  \begin{aligned}
@@ -26,66 +26,44 @@
 </ol>
 <ol>
 <li><p>卷积和相关的数学关系</p>
-<p> $x(t)☆y(t)=x^<em>(-\tau)</em>y(\tau)$</p>
+<p> $x(t)\star y(t)=x^\ast (-\tau)\ast y(\tau)$</p>
 <p> 证明：</p>
 <script type="math/tex; mode=display">
  \begin{aligned}
- R_{xy}(\tau)=x(t)☆y(t)&=\int_{-\infty}^{+\infty}x^*(t)y(t+\tau)\ \rm{d}t\\
- &=\int_{-\infty}^{+\infty}x^*(t-\tau)y(t)\ \rm{d}t\\
- &=\int_{-\infty}^{+\infty}x^*(-(\tau-t))y(t)\ \rm{d}t\\
- &=x^*(-\tau)*y(\tau)
+ R_{xy}(\tau)=x(t)\star y(t)&=\int_{-\infty}^{+\infty}x^\ast (t)y(t+\tau)\ \rm{d}t\\
+ &=\int_{-\infty}^{+\infty}x^\ast (t-\tau)y(t)\ \rm{d}t\\
+ &=\int_{-\infty}^{+\infty}x^\ast (-(\tau-t))y(t)\ \rm{d}t\\
+ &=x^\ast (-\tau)\ast y(\tau)
  \end{aligned}</script></li>
 <li><p>卷积定理和相关定理</p>
-<p> 卷积定理：$x(t)*y(t)=X(j\omega)\cdot Y(j\omega)$</p>
-<p> 相关定理：$x(t)☆y(t)=X^*(j\omega)\cdot Y(j\omega)$</p>
-<p> 证明：根据 $f(-t)\leftrightarrow F(-j\omega),\quad f^<em>(t)\leftrightarrow F^</em>(-j\omega)$</p>
+<p> 卷积定理：$x(t)\ast y(t)=X(j\omega)\cdot Y(j\omega)$</p>
+<p> 相关定理：$x(t)\star y(t)=X^\ast (j\omega)\cdot Y(j\omega)$</p>
+<p> 证明：根据 $f(-t)\leftrightarrow F(-j\omega),\quad f^\ast (t)\leftrightarrow F^\ast (-j\omega)$</p>
 <script type="math/tex; mode=display">
  \begin{aligned}
- x(t)☆y(t)&=x^*(-\tau)*y(\tau)\\
- &=X^*(j\omega)\cdot Y(j\omega)
+ x(t)\star y(t)&=x^\ast (-\tau)\ast y(\tau)\\
+ &=X^\ast (j\omega)\cdot Y(j\omega)
  \end{aligned}</script></li>
 </ol>
 <h2 id="图像处理的内容"><a href="#图像处理的内容" class="headerlink" title="图像处理的内容"></a>图像处理的内容</h2><p>二维图像中，设图像为 $f(x,y)$，模板为 $h(x,y)$，</p>
-<p>卷积处理：$h(x,y)*f(x,y)=\sum\limits<em>{-s}^{s}\sum\limits</em>{-t}^{t}h(s,t)f(x-s,y-t)$</p>
-<p>相关处理：$h(x,y)☆f(x,y)=\sum\limits<em>{-s}^{s}\sum\limits</em>{-t}^{t}h(s,t)f(x+s,y+t)$</p>
-<p>卷积定理：$h(x,y)*f(x,y)=H(j\omega)\cdot F(j\omega)$</p>
-<p>相关定理：$h(x,y)☆f(x,y)=H^*(j\omega)\cdot F(j\omega)$</p>
-<p>数字图像处理中（冈萨雷斯 第三版），相关处理定义为 $f(x,y)☆h(x,y)=\sum\limits<em>{-s}^{s}\sum\limits</em>{-t}^{t}f(s,t)h(x+s,y+t)$，其实和上面罗列的定义是一样的，只不过书中默认 $f(x,y)$ 是模板，$h(x,y)$ 是图像。其他公式道理相同。</p>
-<p>依据卷积、相关定理可以证明：设$h(x,y)=h_1(x,y)*h_2(x,y)$</p>
+<p>卷积处理：$h(x,y)\ast f(x,y)=\sum\limits<em>{-s}^{s}\sum\limits</em>{-t}^{t}h(s,t)f(x-s,y-t)$</p>
+<p>相关处理：$h(x,y)\star f(x,y)=\sum\limits<em>{-s}^{s}\sum\limits</em>{-t}^{t}h(s,t)f(x+s,y+t)$</p>
+<p>卷积定理：$h(x,y)\ast f(x,y)=H(j\omega)\cdot F(j\omega)$</p>
+<p>相关定理：$h(x,y)\star f(x,y)=H^\ast (j\omega)\cdot F(j\omega)$</p>
+<p>数字图像处理中（冈萨雷斯 第三版），相关处理定义为 $f(x,y)\star h(x,y)=\sum\limits<em>{-s}^{s}\sum\limits</em>{-t}^{t}f(s,t)h(x+s,y+t)$，其实和上面罗列的定义是一样的，只不过书中默认 $f(x,y)$ 是模板，$h(x,y)$ 是图像。其他公式道理相同。</p>
+<p>依据卷积、相关定理可以证明：设$h(x,y)=h_1(x,y)\ast h_2(x,y)$</p>
 <ul>
-<li>$f(x,y)<em>h(x,y)=f(x,y)</em>h_1(x,y)*h_2(x,y)$</li>
-<li>$h(x,y)☆f(x,y)=h_2(x,y)☆h_1(x,y)☆f(x,y)$</li>
+<li>$f(x,y)\ast h(x,y)=f(x,y)\ast h_1(x,y)\ast h_2(x,y)$</li>
+<li>$h(x,y)\star f(x,y)=h_2(x,y)\star h_1(x,y)\star f(x,y)$</li>
 </ul>
 <p>使用 matlab 验证：</p>
-<figure class="highlight matlab"><table><tr><td class="code"><pre><span class="line">clear all</span><br><span class="line">h1 = [<span class="number">1</span> <span class="number">2</span> <span class="number">3</span>];</span><br><span class="line">h2 = [<span class="number">1</span>;<span class="number">2</span>;<span class="number">3</span>];</span><br><span class="line">h = conv2(h1,h2);</span><br><span class="line">f = [<span class="number">1</span> <span class="number">2</span> <span class="number">3</span>;<span class="number">4</span> <span class="number">5</span> <span class="number">6</span>;<span class="number">7</span> <span class="number">8</span> <span class="number">9</span>];</span><br><span class="line"><span class="comment">%验证相关定理</span></span><br><span class="line">imfilter(f,h,<span class="string">&#x27;circular&#x27;</span>)</span><br><span class="line">fftshift(ifft2(<span class="built_in">conj</span>(fft2(f)).*fft2(h)))</span><br><span class="line"><span class="comment">%验证一次大相关可以分解成两次小相关</span></span><br><span class="line">imfilter(imfilter(f,h1,<span class="string">&#x27;circular&#x27;</span>),h2,<span class="string">&#x27;circular&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight matlab"><table><tr><td class="code"><pre><span class="line">clear all</span><br><span class="line">h1 = [<span class="number">1</span> <span class="number">2</span> <span class="number">3</span>];</span><br><span class="line">h2 = [<span class="number">1</span>;<span class="number">2</span>;<span class="number">3</span>];</span><br><span class="line">h = conv2(h1,h2);</span><br><span class="line">f = [<span class="number">1</span> <span class="number">2</span> <span class="number">3</span>;<span class="number">4</span> <span class="number">5</span> <span class="number">6</span>;<span class="number">7</span> <span class="number">8</span> <span class="number">9</span>];</span><br><span class="line"><span class="comment">%验证相关定理</span></span><br><span class="line">imfilter(f,h,<span class="string">&#x27;circular&#x27;</span>)</span><br><span class="line">fftshift(ifft2(<span class="built_in">conj</span>(fft2(f)).\ast fft2(h)))</span><br><span class="line"><span class="comment">%验证一次大相关可以分解成两次小相关</span></span><br><span class="line">imfilter(imfilter(f,h1,<span class="string">&#x27;circular&#x27;</span>),h2,<span class="string">&#x27;circular&#x27;</span>)</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>学习笔记</category>
       </categories>
       <tags>
         <tag>信号处理</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Latex中使用简便好看的超链接引用</title>
-    <url>/2020/04/28/latex_ref/</url>
-    <content><![CDATA[<p>搭配使用hyperref和cleverref两个宏包，辅以xcolor宏包。</p>
-<span id="more"></span>
-<h2 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h2><p>这个方法没有处理引用与正文之间的间距，不美观，我现在已经不用了。</p>
-<p>以下是原文。</p>
-<h2 id="实现方式"><a href="#实现方式" class="headerlink" title="实现方式"></a>实现方式</h2><p>Latex自带的引用<code>ref&#123;lable&#125;</code>将只对数字产生效果，而诸如Figure、Table、Equation等文字不会产生超链接的效果。可以使用hyperref宏包解决这个问题：</p>
-<figure class="highlight tex"><table><tr><td class="code"><pre><span class="line"><span class="keyword">\documentclass</span>[UTF8]&#123;ctexart&#125;</span><br><span class="line"><span class="keyword">\usepackage</span>&#123;graphicx&#125; <span class="comment">%图</span></span><br><span class="line"><span class="keyword">\usepackage</span>[usenames,dvipsnames]&#123;xcolor&#125; <span class="comment">%加入颜色包并预加载颜色名称</span></span><br><span class="line"><span class="keyword">\definecolor</span>&#123;DarkGreen&#125;&#123;rgb&#125;&#123;0.0,0.4,0.0&#125; <span class="comment">%自定义颜色名称</span></span><br><span class="line"><span class="keyword">\usepackage</span>[colorlinks,</span><br><span class="line">            linkcolor=MidnightBlue,</span><br><span class="line">            anchorcolor=blue,</span><br><span class="line">            citecolor=red</span><br><span class="line">            ]&#123;hyperref&#125; <span class="comment">%超链接</span></span><br><span class="line"><span class="keyword">\usepackage</span>[capitalise,noabbrev]&#123;cleveref&#125; <span class="comment">%大写且不缩写的引用</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">\begin</span>&#123;document&#125;</span><br><span class="line"><span class="keyword">\begin</span>&#123;figure&#125;[htbp]</span><br><span class="line"><span class="keyword">\centering</span></span><br><span class="line"><span class="keyword">\includegraphics</span>[width=1<span class="keyword">\textwidth</span>]&#123;test.png&#125;</span><br><span class="line"><span class="keyword">\caption</span>&#123;title&#125;<span class="keyword">\label</span>&#123;fig:contribute&#125;</span><br><span class="line"><span class="keyword">\end</span>&#123;figure&#125;</span><br><span class="line"></span><br><span class="line">Just like <span class="keyword">\ref</span>&#123;fig:contribute&#125;.</span><br><span class="line"></span><br><span class="line">Just like <span class="keyword">\cref</span>&#123;fig:contribute&#125;.</span><br><span class="line"></span><br><span class="line">Just like <span class="keyword">\hyperref</span>[fig:contribute]&#123;<span class="keyword">\cref</span>*&#123;fig:contribute&#125;&#125;.</span><br><span class="line"><span class="keyword">\end</span>&#123;document&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="https://raw.githubusercontent.com/mansang127/typora-pic/master/img/20200428233515.png" style="zoom:100%"></p>
-<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>hyperref的用法为<code>\hyperref[标签]&#123;描述&#125;</code>，我们通过修改{描述}中的内容可以实现自定义超链接的文字。通过带星号的ref引用，可以产生不含超链接的编号，以免和hyperref发生冲突。</p>
-<h2 id="颜色"><a href="#颜色" class="headerlink" title="颜色"></a>颜色</h2><p>导入hyperref宏包的时候可以选择链接的颜色，如果使用xcolor宏包就可以实现自定义颜色。导入xcolor宏包时可以预加载一些颜色名称，例如MidnightBlue，当然也可以通过definecolor自定义颜色，例如DarkGreen。</p>
-<h2 id="更加简便的引用"><a href="#更加简便的引用" class="headerlink" title="更加简便的引用"></a>更加简便的引用</h2><p>当引用不同的对象时，关键字也需要修改，比如插图的话就要写Figure，表格的话就要写Table。通过使用cleverref宏包的cref命令，可以自动识别引用的对象是哪种，自动添加上对应的关键字。还可以自定义关键字的样式，比如是否大写，是否使用缩写等。注意cleverref宏包一定要在hyperref宏包之后加入。最后，可以通过定义新命令来节省时间。</p>
-<figure class="highlight tex"><table><tr><td class="code"><pre><span class="line"><span class="keyword">\newcommand</span>*&#123;<span class="keyword">\myref</span>&#125;[1]&#123;<span class="keyword">\hyperref</span>[<span class="params">#1</span>]&#123;<span class="keyword">\cref</span>*&#123;<span class="params">#1</span>&#125;&#125;&#125;</span><br><span class="line">...</span><br><span class="line">Just like <span class="keyword">\myref</span>&#123;fig:contribute&#125;.</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>学习笔记</category>
-      </categories>
-      <tags>
-        <tag>Latex</tag>
       </tags>
   </entry>
   <entry>
@@ -156,6 +134,28 @@
       </categories>
       <tags>
         <tag>Next</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Latex中使用简便好看的超链接引用</title>
+    <url>/2020/04/28/latex_ref/</url>
+    <content><![CDATA[<p>搭配使用hyperref和cleverref两个宏包，辅以xcolor宏包。</p>
+<span id="more"></span>
+<h2 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h2><p>这个方法没有处理引用与正文之间的间距，不美观，我现在已经不用了。</p>
+<p>以下是原文。</p>
+<h2 id="实现方式"><a href="#实现方式" class="headerlink" title="实现方式"></a>实现方式</h2><p>Latex自带的引用<code>ref&#123;lable&#125;</code>将只对数字产生效果，而诸如Figure、Table、Equation等文字不会产生超链接的效果。可以使用hyperref宏包解决这个问题：</p>
+<figure class="highlight tex"><table><tr><td class="code"><pre><span class="line"><span class="keyword">\documentclass</span>[UTF8]&#123;ctexart&#125;</span><br><span class="line"><span class="keyword">\usepackage</span>&#123;graphicx&#125; <span class="comment">%图</span></span><br><span class="line"><span class="keyword">\usepackage</span>[usenames,dvipsnames]&#123;xcolor&#125; <span class="comment">%加入颜色包并预加载颜色名称</span></span><br><span class="line"><span class="keyword">\definecolor</span>&#123;DarkGreen&#125;&#123;rgb&#125;&#123;0.0,0.4,0.0&#125; <span class="comment">%自定义颜色名称</span></span><br><span class="line"><span class="keyword">\usepackage</span>[colorlinks,</span><br><span class="line">            linkcolor=MidnightBlue,</span><br><span class="line">            anchorcolor=blue,</span><br><span class="line">            citecolor=red</span><br><span class="line">            ]&#123;hyperref&#125; <span class="comment">%超链接</span></span><br><span class="line"><span class="keyword">\usepackage</span>[capitalise,noabbrev]&#123;cleveref&#125; <span class="comment">%大写且不缩写的引用</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">\begin</span>&#123;document&#125;</span><br><span class="line"><span class="keyword">\begin</span>&#123;figure&#125;[htbp]</span><br><span class="line"><span class="keyword">\centering</span></span><br><span class="line"><span class="keyword">\includegraphics</span>[width=1<span class="keyword">\textwidth</span>]&#123;test.png&#125;</span><br><span class="line"><span class="keyword">\caption</span>&#123;title&#125;<span class="keyword">\label</span>&#123;fig:contribute&#125;</span><br><span class="line"><span class="keyword">\end</span>&#123;figure&#125;</span><br><span class="line"></span><br><span class="line">Just like <span class="keyword">\ref</span>&#123;fig:contribute&#125;.</span><br><span class="line"></span><br><span class="line">Just like <span class="keyword">\cref</span>&#123;fig:contribute&#125;.</span><br><span class="line"></span><br><span class="line">Just like <span class="keyword">\hyperref</span>[fig:contribute]&#123;<span class="keyword">\cref</span>*&#123;fig:contribute&#125;&#125;.</span><br><span class="line"><span class="keyword">\end</span>&#123;document&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/mansang127/typora-pic/master/img/20200428233515.png" style="zoom:100%"></p>
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>hyperref的用法为<code>\hyperref[标签]&#123;描述&#125;</code>，我们通过修改{描述}中的内容可以实现自定义超链接的文字。通过带星号的ref引用，可以产生不含超链接的编号，以免和hyperref发生冲突。</p>
+<h2 id="颜色"><a href="#颜色" class="headerlink" title="颜色"></a>颜色</h2><p>导入hyperref宏包的时候可以选择链接的颜色，如果使用xcolor宏包就可以实现自定义颜色。导入xcolor宏包时可以预加载一些颜色名称，例如MidnightBlue，当然也可以通过definecolor自定义颜色，例如DarkGreen。</p>
+<h2 id="更加简便的引用"><a href="#更加简便的引用" class="headerlink" title="更加简便的引用"></a>更加简便的引用</h2><p>当引用不同的对象时，关键字也需要修改，比如插图的话就要写Figure，表格的话就要写Table。通过使用cleverref宏包的cref命令，可以自动识别引用的对象是哪种，自动添加上对应的关键字。还可以自定义关键字的样式，比如是否大写，是否使用缩写等。注意cleverref宏包一定要在hyperref宏包之后加入。最后，可以通过定义新命令来节省时间。</p>
+<figure class="highlight tex"><table><tr><td class="code"><pre><span class="line"><span class="keyword">\newcommand</span>*&#123;<span class="keyword">\myref</span>&#125;[1]&#123;<span class="keyword">\hyperref</span>[<span class="params">#1</span>]&#123;<span class="keyword">\cref</span>*&#123;<span class="params">#1</span>&#125;&#125;&#125;</span><br><span class="line">...</span><br><span class="line">Just like <span class="keyword">\myref</span>&#123;fig:contribute&#125;.</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>Latex</tag>
       </tags>
   </entry>
 </search>
