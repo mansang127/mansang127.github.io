@@ -54,6 +54,32 @@
       </tags>
   </entry>
   <entry>
+    <title>Latex中使用简便好看的超链接引用</title>
+    <url>/2020/04/28/latex_ref/</url>
+    <content><![CDATA[<p>搭配使用hyperref和cleverref两个宏包，辅以xcolor宏包。</p>
+<span id="more"></span>
+
+<h2 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h2><p>这个方法没有处理引用与正文之间的间距，不美观，我现在已经不用了。</p>
+<p>以下是原文。</p>
+<h2 id="实现方式"><a href="#实现方式" class="headerlink" title="实现方式"></a>实现方式</h2><p>Latex自带的引用<code>ref&#123;lable&#125;</code>将只对数字产生效果，而诸如Figure、Table、Equation等文字不会产生超链接的效果。可以使用hyperref宏包解决这个问题：</p>
+<figure class="highlight tex"><table><tr><td class="code"><pre><span class="line"><span class="keyword">\documentclass</span>[UTF8]&#123;ctexart&#125;</span><br><span class="line"><span class="keyword">\usepackage</span>&#123;graphicx&#125; <span class="comment">%图</span></span><br><span class="line"><span class="keyword">\usepackage</span>[usenames,dvipsnames]&#123;xcolor&#125; <span class="comment">%加入颜色包并预加载颜色名称</span></span><br><span class="line"><span class="keyword">\definecolor</span>&#123;DarkGreen&#125;&#123;rgb&#125;&#123;0.0,0.4,0.0&#125; <span class="comment">%自定义颜色名称</span></span><br><span class="line"><span class="keyword">\usepackage</span>[colorlinks,</span><br><span class="line">            linkcolor=MidnightBlue,</span><br><span class="line">            anchorcolor=blue,</span><br><span class="line">            citecolor=red</span><br><span class="line">            ]&#123;hyperref&#125; <span class="comment">%超链接</span></span><br><span class="line"><span class="keyword">\usepackage</span>[capitalise,noabbrev]&#123;cleveref&#125; <span class="comment">%大写且不缩写的引用</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">\begin</span>&#123;document&#125;</span><br><span class="line"><span class="keyword">\begin</span>&#123;figure&#125;[htbp]</span><br><span class="line"><span class="keyword">\centering</span></span><br><span class="line"><span class="keyword">\includegraphics</span>[width=1<span class="keyword">\textwidth</span>]&#123;test.png&#125;</span><br><span class="line"><span class="keyword">\caption</span>&#123;title&#125;<span class="keyword">\label</span>&#123;fig:contribute&#125;</span><br><span class="line"><span class="keyword">\end</span>&#123;figure&#125;</span><br><span class="line"></span><br><span class="line">Just like <span class="keyword">\ref</span>&#123;fig:contribute&#125;.</span><br><span class="line"></span><br><span class="line">Just like <span class="keyword">\cref</span>&#123;fig:contribute&#125;.</span><br><span class="line"></span><br><span class="line">Just like <span class="keyword">\hyperref</span>[fig:contribute]&#123;<span class="keyword">\cref</span>*&#123;fig:contribute&#125;&#125;.</span><br><span class="line"><span class="keyword">\end</span>&#123;document&#125;</span><br></pre></td></tr></table></figure>
+
+<img src="https://raw.githubusercontent.com/mansang127/typora-pic/master/img/20200428233515.png" style="zoom:100%">
+
+<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>hyperref的用法为<code>\hyperref[标签]&#123;描述&#125;</code>，我们通过修改{描述}中的内容可以实现自定义超链接的文字。通过带星号的ref引用，可以产生不含超链接的编号，以免和hyperref发生冲突。</p>
+<h2 id="颜色"><a href="#颜色" class="headerlink" title="颜色"></a>颜色</h2><p>导入hyperref宏包的时候可以选择链接的颜色，如果使用xcolor宏包就可以实现自定义颜色。导入xcolor宏包时可以预加载一些颜色名称，例如MidnightBlue，当然也可以通过definecolor自定义颜色，例如DarkGreen。</p>
+<h2 id="更加简便的引用"><a href="#更加简便的引用" class="headerlink" title="更加简便的引用"></a>更加简便的引用</h2><p>当引用不同的对象时，关键字也需要修改，比如插图的话就要写Figure，表格的话就要写Table。通过使用cleverref宏包的cref命令，可以自动识别引用的对象是哪种，自动添加上对应的关键字。还可以自定义关键字的样式，比如是否大写，是否使用缩写等。注意cleverref宏包一定要在hyperref宏包之后加入。最后，可以通过定义新命令来节省时间。</p>
+<figure class="highlight tex"><table><tr><td class="code"><pre><span class="line"><span class="keyword">\newcommand</span>*&#123;<span class="keyword">\myref</span>&#125;[1]&#123;<span class="keyword">\hyperref</span>[<span class="params">#1</span>]&#123;<span class="keyword">\cref</span>*&#123;<span class="params">#1</span>&#125;&#125;&#125;</span><br><span class="line">...</span><br><span class="line">Just like <span class="keyword">\myref</span>&#123;fig:contribute&#125;.</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>Latex</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Github Pages配合Hexo主题Next搭建个人网站</title>
     <url>/2020/04/24/next/</url>
     <content><![CDATA[<p>使用Github Pages配合Hexo，并配置Hexo的Next主题。记录一下个人在搭建过程中遇到的一些问题，希望能为其他人节省一些时间。</p>
@@ -76,7 +102,7 @@
 </li>
 <li></li>
 </ol>
-<p>以下各节是2020年的文章，有所修正</p>
+<p>以下各节是2020年的文章，有所修正。</p>
 <h2 id="Github-Pages配合Hexo初步搭建网站"><a href="#Github-Pages配合Hexo初步搭建网站" class="headerlink" title="Github Pages配合Hexo初步搭建网站"></a>Github Pages配合Hexo初步搭建网站</h2><p>按照这篇文章一步步做就可以了<a href="https://zhuanlan.zhihu.com/p/26625249" title="https://zhuanlan.zhihu.com/p/26625249">GitHub+Hexo 搭建个人网站详细教程</a>，这里分享一下需要注意的地方。</p>
 <ol>
 <li><p>仓库一定要按照 <strong>用户名.github.io</strong> 这个形式</p>
@@ -94,6 +120,8 @@
 <li><p><code>hexo init blog</code>将会创建一个新的blog文件夹，之后的诸如<code>hexo g</code>命令要在这个新的blog文件夹里执行，这点原文中有提，但是看起来容易让人忽略，可以使用<code>hexo init</code>来避免blog文件夹的嵌套。如果命令报错的话检查一下nodejs是否是最新版本。</p>
 </li>
 <li><p>修改<strong>站点配置文件</strong>的deploy内容时，注意每个冒号后面需要有一个空格。</p>
+</li>
+<li><p>之后就可以使用<code>hexo clean &amp;&amp; hexo g -d</code>来同步，若有超时报错，可以执行<code>git init</code>再重新同步。</p>
 </li>
 </ol>
 <h2 id="撰写博客——Markdown说明"><a href="#撰写博客——Markdown说明" class="headerlink" title="撰写博客——Markdown说明"></a>撰写博客——Markdown说明</h2><h3 id="markdown介绍"><a href="#markdown介绍" class="headerlink" title="markdown介绍"></a>markdown介绍</h3><p>写博客使用markdown语法，网上的教程有很多，找一篇跟着例子写一写半天就能学会。编辑器推荐使用typora，不仅支持数学公式而且还能实时预览，还支持html语法。</p>
@@ -127,32 +155,6 @@
       </categories>
       <tags>
         <tag>Next</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Latex中使用简便好看的超链接引用</title>
-    <url>/2020/04/28/latex_ref/</url>
-    <content><![CDATA[<p>搭配使用hyperref和cleverref两个宏包，辅以xcolor宏包。</p>
-<span id="more"></span>
-
-<h2 id="更新"><a href="#更新" class="headerlink" title="更新"></a>更新</h2><p>这个方法没有处理引用与正文之间的间距，不美观，我现在已经不用了。</p>
-<p>以下是原文。</p>
-<h2 id="实现方式"><a href="#实现方式" class="headerlink" title="实现方式"></a>实现方式</h2><p>Latex自带的引用<code>ref&#123;lable&#125;</code>将只对数字产生效果，而诸如Figure、Table、Equation等文字不会产生超链接的效果。可以使用hyperref宏包解决这个问题：</p>
-<figure class="highlight tex"><table><tr><td class="code"><pre><span class="line"><span class="keyword">\documentclass</span>[UTF8]&#123;ctexart&#125;</span><br><span class="line"><span class="keyword">\usepackage</span>&#123;graphicx&#125; <span class="comment">%图</span></span><br><span class="line"><span class="keyword">\usepackage</span>[usenames,dvipsnames]&#123;xcolor&#125; <span class="comment">%加入颜色包并预加载颜色名称</span></span><br><span class="line"><span class="keyword">\definecolor</span>&#123;DarkGreen&#125;&#123;rgb&#125;&#123;0.0,0.4,0.0&#125; <span class="comment">%自定义颜色名称</span></span><br><span class="line"><span class="keyword">\usepackage</span>[colorlinks,</span><br><span class="line">            linkcolor=MidnightBlue,</span><br><span class="line">            anchorcolor=blue,</span><br><span class="line">            citecolor=red</span><br><span class="line">            ]&#123;hyperref&#125; <span class="comment">%超链接</span></span><br><span class="line"><span class="keyword">\usepackage</span>[capitalise,noabbrev]&#123;cleveref&#125; <span class="comment">%大写且不缩写的引用</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">\begin</span>&#123;document&#125;</span><br><span class="line"><span class="keyword">\begin</span>&#123;figure&#125;[htbp]</span><br><span class="line"><span class="keyword">\centering</span></span><br><span class="line"><span class="keyword">\includegraphics</span>[width=1<span class="keyword">\textwidth</span>]&#123;test.png&#125;</span><br><span class="line"><span class="keyword">\caption</span>&#123;title&#125;<span class="keyword">\label</span>&#123;fig:contribute&#125;</span><br><span class="line"><span class="keyword">\end</span>&#123;figure&#125;</span><br><span class="line"></span><br><span class="line">Just like <span class="keyword">\ref</span>&#123;fig:contribute&#125;.</span><br><span class="line"></span><br><span class="line">Just like <span class="keyword">\cref</span>&#123;fig:contribute&#125;.</span><br><span class="line"></span><br><span class="line">Just like <span class="keyword">\hyperref</span>[fig:contribute]&#123;<span class="keyword">\cref</span>*&#123;fig:contribute&#125;&#125;.</span><br><span class="line"><span class="keyword">\end</span>&#123;document&#125;</span><br></pre></td></tr></table></figure>
-
-<img src="https://raw.githubusercontent.com/mansang127/typora-pic/master/img/20200428233515.png" style="zoom:100%">
-
-<h2 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h2><p>hyperref的用法为<code>\hyperref[标签]&#123;描述&#125;</code>，我们通过修改{描述}中的内容可以实现自定义超链接的文字。通过带星号的ref引用，可以产生不含超链接的编号，以免和hyperref发生冲突。</p>
-<h2 id="颜色"><a href="#颜色" class="headerlink" title="颜色"></a>颜色</h2><p>导入hyperref宏包的时候可以选择链接的颜色，如果使用xcolor宏包就可以实现自定义颜色。导入xcolor宏包时可以预加载一些颜色名称，例如MidnightBlue，当然也可以通过definecolor自定义颜色，例如DarkGreen。</p>
-<h2 id="更加简便的引用"><a href="#更加简便的引用" class="headerlink" title="更加简便的引用"></a>更加简便的引用</h2><p>当引用不同的对象时，关键字也需要修改，比如插图的话就要写Figure，表格的话就要写Table。通过使用cleverref宏包的cref命令，可以自动识别引用的对象是哪种，自动添加上对应的关键字。还可以自定义关键字的样式，比如是否大写，是否使用缩写等。注意cleverref宏包一定要在hyperref宏包之后加入。最后，可以通过定义新命令来节省时间。</p>
-<figure class="highlight tex"><table><tr><td class="code"><pre><span class="line"><span class="keyword">\newcommand</span>*&#123;<span class="keyword">\myref</span>&#125;[1]&#123;<span class="keyword">\hyperref</span>[<span class="params">#1</span>]&#123;<span class="keyword">\cref</span>*&#123;<span class="params">#1</span>&#125;&#125;&#125;</span><br><span class="line">...</span><br><span class="line">Just like <span class="keyword">\myref</span>&#123;fig:contribute&#125;.</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>学习笔记</category>
-      </categories>
-      <tags>
-        <tag>Latex</tag>
       </tags>
   </entry>
 </search>
