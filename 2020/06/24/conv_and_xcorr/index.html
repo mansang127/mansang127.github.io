@@ -120,6 +120,21 @@
     <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
 
   </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
         <li class="menu-item menu-item-archives">
 
     <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
@@ -235,46 +250,59 @@
       
         <p>包括基本数学定义，交换性质，两者的关系，卷积和相关定理。包括证明。</p>
 <span id="more"></span>
-
 <h2 id="卷积与互相关"><a href="#卷积与互相关" class="headerlink" title="卷积与互相关"></a>卷积与互相关</h2><ol>
 <li><p>数学定义</p>
 <p> 卷积：$z(t)=x(t)*y(t)=\int_{-\infty}^{+\infty}x(\tau)y(t-\tau)\ \rm{d}\tau$</p>
-<p> 相关：$R_{xy}(\tau)=x(t)☆y(t)=\int_{-\infty}^{+\infty}x^*(t)y(t+\tau)\ \rm{d}t$</p>
+<p> 相关：$R<em>{xy}(\tau)=x(t)☆y(t)=\int</em>{-\infty}^{+\infty}x^*(t)y(t+\tau)\ \rm{d}t$</p>
 <p> 两者很像，但要注意卷积的积分变量是 $\tau$ ，相关的积分变量是 $t$ 。</p>
 </li>
 </ol>
-<ol start="2">
+<ol>
 <li><p>交换性</p>
-<p> 卷积满足交换律，即 $x(t)*y(t)=y(t)*x(t)$</p>
-<p> 相关不满足交换律， 即 $R_{xy}(\tau)=R_{yx}(-\tau)=\int_{-\infty}^{+\infty}x^*(t+\tau)y(t)\ \rm{d}t$</p>
-<p> 证明：<br> $$<br> \begin{aligned}<br> R_{xy}(\tau)&amp;=\rm{E}[x(t)y(t+\tau)]\<br> &amp;=\rm{E}[y(t+\tau)x(t)]\<br> &amp;=R_{yx}(-\tau)<br> \end{aligned}<br> $$</p>
-</li>
+<p> 卷积满足交换律，即 $x(t)<em>y(t)=y(t)</em>x(t)$</p>
+<p> 相关不满足交换律， 即 $R<em>{xy}(\tau)=R</em>{yx}(-\tau)=\int_{-\infty}^{+\infty}x^*(t+\tau)y(t)\ \rm{d}t$</p>
+<p> 证明：</p>
+<script type="math/tex; mode=display">
+ \begin{aligned}
+ R_{xy}(\tau)&=\rm{E}[x(t)y(t+\tau)]\\
+ &=\rm{E}[y(t+\tau)x(t)]\\
+ &=R_{yx}(-\tau)
+ \end{aligned}</script></li>
 </ol>
-<ol start="3">
+<ol>
 <li><p>卷积和相关的数学关系</p>
-<p> $x(t)☆y(t)=x^*(-\tau)*y(\tau)$</p>
-<p> 证明：<br> $$<br> \begin{aligned}<br> R_{xy}(\tau)=x(t)☆y(t)&amp;=\int_{-\infty}^{+\infty}x^*(t)y(t+\tau)\ \rm{d}t\<br> &amp;=\int_{-\infty}^{+\infty}x^*(t-\tau)y(t)\ \rm{d}t\<br> &amp;=\int_{-\infty}^{+\infty}x^*(-(\tau-t))y(t)\ \rm{d}t\<br> &amp;=x^*(-\tau)*y(\tau)<br> \end{aligned}<br> $$</p>
-</li>
+<p> $x(t)☆y(t)=x^<em>(-\tau)</em>y(\tau)$</p>
+<p> 证明：</p>
+<script type="math/tex; mode=display">
+ \begin{aligned}
+ R_{xy}(\tau)=x(t)☆y(t)&=\int_{-\infty}^{+\infty}x^*(t)y(t+\tau)\ \rm{d}t\\
+ &=\int_{-\infty}^{+\infty}x^*(t-\tau)y(t)\ \rm{d}t\\
+ &=\int_{-\infty}^{+\infty}x^*(-(\tau-t))y(t)\ \rm{d}t\\
+ &=x^*(-\tau)*y(\tau)
+ \end{aligned}</script></li>
 <li><p>卷积定理和相关定理</p>
 <p> 卷积定理：$x(t)*y(t)=X(j\omega)\cdot Y(j\omega)$</p>
 <p> 相关定理：$x(t)☆y(t)=X^*(j\omega)\cdot Y(j\omega)$</p>
-<p> 证明：根据 $f(-t)\leftrightarrow F(-j\omega),\quad f^*(t)\leftrightarrow F^*(-j\omega)$<br> $$<br> \begin{aligned}<br> x(t)☆y(t)&amp;=x^*(-\tau)<em>y(\tau)\<br> &amp;=X^</em>(j\omega)\cdot Y(j\omega)<br> \end{aligned}<br> $$</p>
-</li>
+<p> 证明：根据 $f(-t)\leftrightarrow F(-j\omega),\quad f^<em>(t)\leftrightarrow F^</em>(-j\omega)$</p>
+<script type="math/tex; mode=display">
+ \begin{aligned}
+ x(t)☆y(t)&=x^*(-\tau)*y(\tau)\\
+ &=X^*(j\omega)\cdot Y(j\omega)
+ \end{aligned}</script></li>
 </ol>
 <h2 id="图像处理的内容"><a href="#图像处理的内容" class="headerlink" title="图像处理的内容"></a>图像处理的内容</h2><p>二维图像中，设图像为 $f(x,y)$，模板为 $h(x,y)$，</p>
-<p>卷积处理：$h(x,y)*f(x,y)=\sum\limits_{-s}^{s}\sum\limits_{-t}^{t}h(s,t)f(x-s,y-t)$</p>
-<p>相关处理：$h(x,y)☆f(x,y)=\sum\limits_{-s}^{s}\sum\limits_{-t}^{t}h(s,t)f(x+s,y+t)$</p>
+<p>卷积处理：$h(x,y)*f(x,y)=\sum\limits<em>{-s}^{s}\sum\limits</em>{-t}^{t}h(s,t)f(x-s,y-t)$</p>
+<p>相关处理：$h(x,y)☆f(x,y)=\sum\limits<em>{-s}^{s}\sum\limits</em>{-t}^{t}h(s,t)f(x+s,y+t)$</p>
 <p>卷积定理：$h(x,y)*f(x,y)=H(j\omega)\cdot F(j\omega)$</p>
 <p>相关定理：$h(x,y)☆f(x,y)=H^*(j\omega)\cdot F(j\omega)$</p>
-<p>数字图像处理中（冈萨雷斯 第三版），相关处理定义为 $f(x,y)☆h(x,y)=\sum\limits_{-s}^{s}\sum\limits_{-t}^{t}f(s,t)h(x+s,y+t)$，其实和上面罗列的定义是一样的，只不过书中默认 $f(x,y)$ 是模板，$h(x,y)$ 是图像。其他公式道理相同。</p>
+<p>数字图像处理中（冈萨雷斯 第三版），相关处理定义为 $f(x,y)☆h(x,y)=\sum\limits<em>{-s}^{s}\sum\limits</em>{-t}^{t}f(s,t)h(x+s,y+t)$，其实和上面罗列的定义是一样的，只不过书中默认 $f(x,y)$ 是模板，$h(x,y)$ 是图像。其他公式道理相同。</p>
 <p>依据卷积、相关定理可以证明：设$h(x,y)=h_1(x,y)*h_2(x,y)$</p>
 <ul>
-<li>$f(x,y)*h(x,y)=f(x,y)*h_1(x,y)*h_2(x,y)$</li>
+<li>$f(x,y)<em>h(x,y)=f(x,y)</em>h_1(x,y)*h_2(x,y)$</li>
 <li>$h(x,y)☆f(x,y)=h_2(x,y)☆h_1(x,y)☆f(x,y)$</li>
 </ul>
 <p>使用 matlab 验证：</p>
 <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">clear all</span><br><span class="line">h1 = [<span class="number">1</span> <span class="number">2</span> <span class="number">3</span>];</span><br><span class="line">h2 = [<span class="number">1</span>;<span class="number">2</span>;<span class="number">3</span>];</span><br><span class="line">h = conv2(h1,h2);</span><br><span class="line">f = [<span class="number">1</span> <span class="number">2</span> <span class="number">3</span>;<span class="number">4</span> <span class="number">5</span> <span class="number">6</span>;<span class="number">7</span> <span class="number">8</span> <span class="number">9</span>];</span><br><span class="line"><span class="comment">%验证相关定理</span></span><br><span class="line">imfilter(f,h,<span class="string">&#x27;circular&#x27;</span>)</span><br><span class="line">fftshift(ifft2(<span class="built_in">conj</span>(fft2(f)).*fft2(h)))</span><br><span class="line"><span class="comment">%验证一次大相关可以分解成两次小相关</span></span><br><span class="line">imfilter(imfilter(f,h1,<span class="string">&#x27;circular&#x27;</span>),h2,<span class="string">&#x27;circular&#x27;</span>)</span><br></pre></td></tr></table></figure>
-
 
     </div>
 
@@ -377,11 +405,13 @@
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
+          
         <span class="site-state-item-count">1</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
+          
         <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
@@ -411,7 +441,7 @@
   &copy; 
   <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
-    <i class="fa fa-heart"></i>
+    <i class=""></i>
   </span>
   <span class="author" itemprop="copyrightHolder">JW Xu</span>
 </div>
@@ -470,6 +500,61 @@
 
 
   
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 
