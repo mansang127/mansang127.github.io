@@ -111,6 +111,8 @@
  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm uninstall hexo-renderer-marked --save</span><br><span class="line">npm install hexo-renderer-kramed --save</span><br></pre></td></tr></table></figure>
 <p> 主题文件中打开<code>mathjax</code>，在有需要文章开头添加，<code>mathjax: true</code></p>
 </li>
+<li><p>在主题文件中注释掉底部红心，搜索heart关键词即可找到。</p>
+</li>
 </ol>
 <p>以下部分是2020年的文章，内容也许有些过时。</p>
 <h2 id="Github-Pages配合Hexo初步搭建网站"><a href="#Github-Pages配合Hexo初步搭建网站" class="headerlink" title="Github Pages配合Hexo初步搭建网站"></a>Github Pages配合Hexo初步搭建网站</h2><p>按照这篇文章一步步做就可以了<a href="https://zhuanlan.zhihu.com/p/26625249" title="https://zhuanlan.zhihu.com/p/26625249">GitHub+Hexo 搭建个人网站详细教程</a>，这里分享一下需要注意的地方。</p>
